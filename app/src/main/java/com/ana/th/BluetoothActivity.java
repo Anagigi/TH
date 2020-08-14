@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.util.Set;
 
@@ -75,7 +77,11 @@ public class BluetoothActivity extends MainActivity {
 
         }
         if(mBtAdapter==null){
-            // envias mensaje
+            
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            // Handle the slideshow action (for now display a toast).
+            drawer.closeDrawer(GravityCompat.START);
+            displayToast(getString(R.string.finish_activity));
             this.finish();
         }
 

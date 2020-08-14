@@ -35,4 +35,5 @@
 <string name="NoDispNuevo">No hay dispositivos nuevos</string>
 <string name="RecibirDatos">Empezar a recibir</string>
 <string name="SetConfig">Confirmar</string>
+    <string name="finish_activity">No se encuentran dispositivos Bluetooth</string>
 </resources>
