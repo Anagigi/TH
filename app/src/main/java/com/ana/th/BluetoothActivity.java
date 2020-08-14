@@ -77,7 +77,7 @@ public class BluetoothActivity extends MainActivity {
 
         }
         if(mBtAdapter==null){
-            
+
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             // Handle the slideshow action (for now display a toast).
             drawer.closeDrawer(GravityCompat.START);
