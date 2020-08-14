@@ -1,39 +1,42 @@
 <resources>
     <string name="app_name">TH</string>
-<string name="navigation_drawer_open">Open navigation drawer</string>
-<string name="navigation_drawer_close">Close navigation drawer</string>
-<string name="nav_header_title">Android Studio</string>
-<string name="nav_header_subtitle">android.studio@android.com</string>
-<string name="nav_header_desc">Navigation header</string>
-<string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
-<string name="menu_home">Home</string>
-<string name="menu_gallery">Gallery</string>
-<string name="menu_slideshow">Slideshow</string>
-<string name="aloha_hello_world">Aloha hello world</string>
-<string name="communicate">Communicate</string>
-<string name="share">Share</string>
-<string name="send">Send</string>
-<string name="chose_camera">You chose Camera Import</string>
-<string name="chose_gallery">You chose the Gallery</string>
-<string name="chose_slideshow">You chose the Slideshow</string>
-<string name="chose_tools">"You chose Tools "</string>
-<string name="chose_share">You chose Share</string>
-<string name="chose_send">You chose Send</string>
-<string name="tools"><![CDATA[<Tools>]]></string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="aloha_hello_world">Aloha hello world</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
+    <string name="chose_camera">You chose Camera Import</string>
+    <string name="chose_gallery">You chose the Gallery</string>
+    <string name="chose_slideshow">You chose the Slideshow</string>
+    <string name="chose_tools">"You chose Tools "</string>
+    <string name="chose_share">You chose Share</string>
+    <string name="chose_send">You chose Send</string>
+    <string name="tools"><![CDATA[<Tools>]]></string>
 
-<!--    BluetoothActivity-->
-<string name="JustificacionPermiso">El permiso es necesario para utilizar el bluetooth.</string>
-<string name="dispositivos_conocidos">Dispositivos Conocidos</string>
-<string name="dispositivos_nuevos">Nuevos dispositivos</string>
-<string name="boton_inicio">Iniciar Busqueda</string>
-<string name="Boton_detener">Stop</string>
-<string name="DispNoTieneBluetooth">El dispositivo no soporta Bluetooth</string>
-<string name="BluetoothActiv">El Bluetooth esta activado</string>
-<string name="BusquedaAcabada">Busqueda finalizada</string>
-<string name="NoDispCon">No hay dispositivos conocidos</string>
-<string name="NoDispNuevo">No hay dispositivos nuevos</string>
-<string name="RecibirDatos">Empezar a recibir</string>
-<string name="SetConfig">Confirmar</string>
+    <!--    BluetoothActivity-->
+    <string name="JustificacionPermiso">El permiso es necesario para utilizar el bluetooth.</string>
+    <string name="dispositivos_conocidos">Dispositivos Conocidos</string>
+    <string name="dispositivos_nuevos">Nuevos dispositivos</string>
+    <string name="boton_inicio">Iniciar Busqueda</string>
+    <string name="Boton_detener">Stop</string>
+    <string name="DispNoTieneBluetooth">El dispositivo no soporta Bluetooth</string>
+    <string name="BluetoothActiv">El Bluetooth esta activado</string>
+    <string name="BusquedaAcabada">Busqueda finalizada</string>
+    <string name="NoDispCon">No hay dispositivos conocidos</string>
+    <string name="NoDispNuevo">No hay dispositivos nuevos</string>
+    <string name="RecibirDatos">Empezar a recibir</string>
+    <string name="SetConfig">Confirmar</string>
     <string name="finish_activity">No se encuentran dispositivos Bluetooth</string>
+    <string name="sincronizar_datos">Sincronizar Datos</string>
+    <string name="mostrar_sensores">Mostrar sensores</string>
+    <string name="lecturanodo">"Leyendo datos del nodo "</string>
 </resources>
