@@ -32,13 +32,14 @@ public class Sensores extends AppCompatActivity {
 
         setContentView(R.layout.activity_sensores);
         Intent intent = getIntent();
+        ///////GRAFICA ALEATORIA PROVISIONAL///////
         // Enlazamos al XML
         lineChart = findViewById(R.id.lineChart);
         // Creamos un set de datos
         ArrayList<Entry> lineEntries = new ArrayList<Entry>();
-        for(int i=0; i<11; i++){
+        for (int i = 0; i < 11; i++) {
             float y = (int) (Math.random() * 8) + 1;
-            lineEntries.add(new Entry((float) i,(float)y));
+            lineEntries.add(new Entry((float) i, (float) y));
         }
 
         // Unimos los datos al data set
@@ -49,7 +50,7 @@ public class Sensores extends AppCompatActivity {
         lineData.addDataSet(lineDataSet);
         lineChart.setData(lineData);
 
-
+        ////LISTA RECYCLERVIEW PARA LOS NOMBRES DE LOS SENSORES ///////
         //Nombre de los sensores
         // Put initial data into the node list.
         for (int i = 1; i < 6; i++) {
@@ -58,11 +59,11 @@ public class Sensores extends AppCompatActivity {
 
         // Get a handle to the RecyclerView.
         mRecyclerView = findViewById(R.id.recyclerview);
-// Create an adapter and supply the data to be displayed.
+        // Create an adapter and supply the data to be displayed.
         mAdapter = new WordListAdapter(this, mWordList);
-// Connect the adapter with the RecyclerView.
+        // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
-// Give the RecyclerView a default layout manager.
+        // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
