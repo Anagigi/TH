@@ -43,4 +43,9 @@
     <string name="fechayhora">20/10/20 13:26:06</string>
     <string name="nombre_nodo">   Nodo</string>
     <string name="representanodo">representanodo</string>
+
+
+
+    <string name="selecciontemperatura">"Leyendo la temperatura del nodo "</string>
+    <string name="seleccionhumedad">Leyendo humedad del nodo</string>
 </resources>
