@@ -1,58 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardUseCompatPadding="true">
 
-    <RelativeLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-
-        <TextView
-            android:id="@+id/sensor"
-            style="@style/sensor_title" />
 
         <ImageView
-            android:id="@+id/imgPhoto"
+            android:id="@+id/imgNodo"
+            android:layout_width="80dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/representanodo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_nodo" />
+
+        <TextView
+            android:id="@+id/Nodo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/nodo"
+            app:layout_constraintBottom_toTopOf="@+id/Registro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgNodo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Fecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/fecha"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/DatoFecha"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imgNodo"
+            app:layout_constraintTop_toBottomOf="@+id/Registro" />
+
+        <TextView
+            android:id="@+id/Registro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:contentDescription="@string/representanodo"/>
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/registro"
+            app:layout_constraintBottom_toTopOf="@+id/Fecha"
+            app:layout_constraintEnd_toStartOf="@+id/DatoTemp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imgNodo"
+            app:layout_constraintTop_toBottomOf="@+id/Nodo" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/DatoTemp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:layout_toEndOf="@+id/imgPhoto"
-            android:orientation="vertical"
-            android:layout_toRightOf="@+id/imgPhoto">
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/DatoT"
+            app:layout_constraintBaseline_toBaselineOf="@+id/Registro"
+            app:layout_constraintEnd_toStartOf="@+id/DatoHum"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/Registro" />
 
+        <TextView
+            android:id="@+id/DatoHum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/DatoH"
+            app:layout_constraintBaseline_toBaselineOf="@+id/DatoTemp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/DatoTemp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="@string/nombre_nodo"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/DatoFecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/DatoF"
+            app:layout_constraintBaseline_toBaselineOf="@+id/Fecha"
+            app:layout_constraintEnd_toStartOf="@+id/DatoHora"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/Fecha" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:text="@string/registro_tempyhum"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fechayhora"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        </LinearLayout>
-    </RelativeLayout>
-
-
+        <TextView
+            android:id="@+id/DatoHora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/DatoHora"
+            app:layout_constraintBaseline_toBaselineOf="@+id/DatoFecha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/DatoFecha" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

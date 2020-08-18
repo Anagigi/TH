@@ -37,10 +37,28 @@
     <string name="SetConfig">Confirmar</string>
     <string name="finish_activity">No se encuentran dispositivos Bluetooth</string>
     <string name="sincronizar_datos">Sincronizar Datos</string>
+
+
+<!--Lista de sensores -->
+    <string name="representanodo">Imagen que representa nodo</string>
+    <string name="nodo">Nodo</string>
+    <string name="registro">Registro</string>
     <string name="mostrar_sensores">Mostrar sensores</string>
     <string name="lecturanodo">"Leyendo datos del nodo "</string>
-    <string name="registro_tempyhum">   Registro: 32ºC 40%</string>
-    <string name="fechayhora">20/10/20 13:26:06</string>
-    <string name="nombre_nodo">   Nodo</string>
-    <string name="representanodo">representanodo</string>
+
+<!--    Detalle Sensor -->
+
+    <string name="DatoH">- - %</string>
+    <string name="DatoT">- - ºC</string>
+    <string name="selecciontemperatura">"Leyendo la temperatura del nodo "</string>
+    <string name="seleccionhumedad">Leyendo humedad del nodo</string>
+    <string name="img_humedad">Imagen humedad</string>
+    <string name="img_temperatura">Imagen temperatura</string>
+    <string name="temperatura">Temperatura:</string>
+    <string name="humedad">Humedad:</string>
+    <string name="fecha">Fecha:</string>
+    <string name="DatoF">--/--/--</string>
+    <string name="hora">Hora:</string>
+    <string name="DatoHora">--:--:--</string>
+
 </resources>
