@@ -17,7 +17,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Sensores extends AppCompatActivity {
+public class DetalleSensor extends AppCompatActivity {
 
     private LineChart lineChart;
     private LineDataSet lineDataSet;
