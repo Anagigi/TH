@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+
         //setSupportActionBar(toolbar);
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -57,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setNavigationItemSelectedListener(this);
         }
     }
+
+
+
+
 
     /**
      * Handles the Back button: closes the nav drawer.
@@ -92,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * @param item  Item in options menu that was clicked.
      * @return      Returns true if the item was Settings.
      */
+    //TODO iconos del menu
+        /*Ver el menu de la barra
+   @Override
+    public boolean onCreateOptionMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -100,10 +113,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.sincronizar) {
             return true;
         }
-
+        if (id == R.id.bluetooth) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
