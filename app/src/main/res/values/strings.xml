@@ -63,5 +63,8 @@
     <string name="sin_datos">Esperando cargar datos...</string>
     <string name="datos_sincronizados">DATOS SINCRONIZADOS</string>
     <string name="sync">Sincronizar datos</string>
+    <string name="componente_1_logo">componente 1 logo</string>
+    <string name="componente_2_logo">componente 2 logo</string>
+    <string name="componente_3_logo">componente 3 logo</string>
 
 </resources>

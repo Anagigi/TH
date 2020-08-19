@@ -60,7 +60,8 @@
         android:layout_marginRight="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/humedad" />
+        app:srcCompat="@drawable/humedad"
+        android:contentDescription="@string/componente_1_logo"/>
 
     <ImageView
         android:id="@+id/imgTemperatura"
@@ -71,7 +72,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/temperature" />
+        app:srcCompat="@drawable/temperature"
+        android:contentDescription="@string/componente_2_logo"/>
 
     <ImageView
         android:id="@+id/imgtelesilla"
@@ -82,6 +84,7 @@
         android:layout_marginTop="156dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/telesilla" />
+        app:srcCompat="@drawable/telesilla"
+        android:contentDescription="@string/componente_3_logo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
