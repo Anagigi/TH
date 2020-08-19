@@ -4,22 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/deg_dra_bar"
     tools:context=".Inicio">
 
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="133dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@mipmap/ic_humtemp" />
 
     <Button
         android:id="@+id/IdSincronizar"
@@ -27,15 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:onClick="SincronizarDatos"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/deg_dra_background"
+        android:drawableStart="@drawable/ic_bluetooth"
         android:drawableLeft="@drawable/ic_bluetooth"
+        android:gravity="center_vertical"
+        android:onClick="SincronizarDatos"
         android:text="@string/sincronizar_datos"
+        app:layout_constraintBottom_toTopOf="@+id/IdSeleccionNodos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/IdSeleccionNodos"
@@ -43,15 +34,49 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp"
-        android:onClick="MostrarSensores"
+        android:background="@drawable/deg_dra_background"
         android:drawableLeft="@drawable/ic_sensorlist"
+        android:onClick="MostrarSensores"
         android:text="@string/mostrar_sensores"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgHumedad"
+        android:layout_width="106dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/humedad" />
+
+    <ImageView
+        android:id="@+id/imgTemperatura"
+        android:layout_width="163dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdSincronizar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/temperature" />
+
+    <ImageView
+        android:id="@+id/imgtelesilla"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="156dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/telesilla" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
