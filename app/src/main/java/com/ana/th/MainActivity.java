@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     /**
      * Creates the content view and toolbar, sets up the drawer layout and the
@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-
-        //setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
@@ -45,7 +43,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }*/
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+       //TODO: entiendo que esto ya no es necesario porque no tenemos el menu lateral
+       /*
+       DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
@@ -53,33 +53,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.addDrawerListener(toggle);
         }
         toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        if (navigationView != null) {
-            navigationView.setNavigationItemSelectedListener(this);
-        }
+        */
     }
 
 
 
 
-
+    //TODO onbackPressed será dirigido a la actividad principal.
+    // DUDA!!!!!: SE PODRÍA HACER UN SWITCH CASE, PARA QUE ONBACKPRESSED RETROCEDA A
+    // UNA ACTIVIDAD ESPECIFICA( NO SIENDO SIEMPRE ESTA MainActivity), DEPENDIENDO DE LA ACTIVIDAD
+    // EN LA QUE SE ESTÁ?
     /**
      * Handles the Back button: closes the nav drawer.
      */
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
-        if (drawer != null) {
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
                 super.onBackPressed();
                 Intent intent = new Intent(this, BluetoothActivity.class);
                 startActivity(intent);
-            }
         }
-    }
 
     /**
      * Inflates the options menu.
@@ -90,21 +82,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        //return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
-    /**
-     * Handles a click on the Settings item in the options menu.
-     * @param item  Item in options menu that was clicked.
-     * @return      Returns true if the item was Settings.
-     */
-    //TODO iconos del menu
-        /*Ver el menu de la barra
-   @Override
-    public boolean onCreateOptionMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -120,53 +101,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Handles a navigation drawer item click. It detects which item was
-     * clicked and displays a toast message showing which item.
-     * @param item  Item in the navigation drawer
-     * @return      Returns true after closing the nav drawer
-     */
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        // Handle navigation view item clicks here.
-        switch (item.getItemId()) {
-            case R.id.nav_camera:
-                // Handle the camera import action (for now display a toast).
-                drawer.closeDrawer(GravityCompat.START);
-                displayToast(getString(R.string.chose_camera));
-                return true;
-            case R.id.nav_gallery:
-                // Handle the gallery action (for now display a toast).
-                drawer.closeDrawer(GravityCompat.START);
-                displayToast(getString(R.string.chose_gallery));
-                return true;
-            case R.id.nav_slideshow:
-                // Handle the slideshow action (for now display a toast).
-                drawer.closeDrawer(GravityCompat.START);
-                displayToast(getString(R.string.chose_slideshow));
-                return true;
-            case R.id.nav_manage:
-                // Handle the tools action (for now display a toast).
-                drawer.closeDrawer(GravityCompat.START);
-                displayToast(getString(R.string.chose_tools));
-                return true;
-            case R.id.nav_share:
-                // Handle the share action (for now display a toast).
-                drawer.closeDrawer(GravityCompat.START);
-                displayToast(getString(R.string.chose_share));
-                return true;
-            case R.id.nav_send:
-                // Handle the send action (for now display a toast).
-                drawer.closeDrawer(GravityCompat.START);
-                displayToast(getString(R.string.chose_send));
-                return true;
-            default:
-                return false;
-        }
     }
 
     /**
