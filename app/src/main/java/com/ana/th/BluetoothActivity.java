@@ -42,13 +42,13 @@ public class BluetoothActivity extends MainActivity {
     ArrayAdapter<String> dispNuevosArray;
 
     public static String addressEnv;
-    @BindView(R.id.disp_conocidos_titulo)
+    @BindView(R.id.dispositivos_conocidos_titulo)
     TextView dispConocidosTitulo;
-    @BindView(R.id.disp_conocidos_lista)
+    @BindView(R.id.dispositivos_conocidos_lista)
     ListView dispConocidosLista;
-    @BindView(R.id.disp_nuevos_titulo)
+    @BindView(R.id.dispositivos_nuevos_titulo)
     TextView dispNuevosTitulo;
-    @BindView(R.id.disp_nuevos_lista)
+    @BindView(R.id.dispositivos_nuevos_lista)
     ListView dispNuevosLista;
     @BindView(R.id.boton_buscar)
     Button botonBuscar;
@@ -66,7 +66,7 @@ public class BluetoothActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
         ButterKnife.bind(this);
 
         //Selecciona el conector bluetooth
