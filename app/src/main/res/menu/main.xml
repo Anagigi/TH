@@ -2,8 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/sincronizar"
         android:orderInCategory="100"
-        android:title="hola"
-        app:showAsAction="never" />
+        android:title=""
+        android:icon="@drawable/ic_sync_black"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bluetooth"
+        android:orderInCategory="200"
+        android:title=""
+        android:icon="@drawable/ic_bluetooth_black"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -60,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="BuscarDispositivos"
+        android:background="@drawable/deg_dra_background"
         android:text="@string/boton_inicio" />
 
 

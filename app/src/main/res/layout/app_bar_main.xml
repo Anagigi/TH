@@ -12,6 +12,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/deg_dra_bar"
         android:fitsSystemWindows="false"
         android:theme="@style/AppTheme"
         app:expanded="false">
