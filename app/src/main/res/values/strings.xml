@@ -67,4 +67,8 @@
     <string name="componente_2_logo">componente 2 logo</string>
     <string name="componente_3_logo">componente 3 logo</string>
 
+    <string name="registro_tempyhum">   Registro: 32ºC 40%</string>
+    <string name="fechayhora">20/10/20 13:26:06</string>
+    <string name="nombre_nodo">   Nodo</string>
+    <string name="representanodo">representanodo</string>
 </resources>
