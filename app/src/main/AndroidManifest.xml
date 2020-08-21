@@ -14,12 +14,20 @@
         android:roundIcon="@mipmap/ic_iconoapp_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BluetoothActivity">
+        <activity android:name=".InicioActivity"></activity>
+        <activity
+            android:name=".Prueba"
+            android:label="Inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".BluetoothActivity"
+            android:label="Conexión Bluetooth"
+            android:parentActivityName=".InicioActivity"></activity>
 
         <service
             android:name=".MyService"

@@ -1,7 +1,6 @@
 package com.ana.th;
 
 import android.Manifest;
-import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -35,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BluetoothActivity extends MainActivity {
+public class BluetoothActivity extends MasterActivity {
     //Elementos que forman parte del interfaz usando las funciones de butterknife
     ArrayAdapter<String> dispConocidosArray;
     ArrayAdapter<String> dispNuevosArray;

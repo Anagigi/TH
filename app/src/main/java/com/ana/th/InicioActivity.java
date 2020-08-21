@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class Inicio extends AppCompatActivity {
+public class InicioActivity extends AppCompatActivity {
 
     //Esta constante utiliza el nombre de la clase en sí como etiqueta
     private static final String LOG_TAG = MasterActivity.class.getSimpleName();
@@ -22,7 +22,7 @@ public class Inicio extends AppCompatActivity {
 
     public void SincronizarDatos(View view) {
         Log.d(LOG_TAG, "Sincronizando datos...");
-        Intent intent = new Intent(this, Inicio.class);
+        Intent intent = new Intent(this, InicioActivity.class);
         //TODO sustituir por la clase que se encarga de sincronizar datos
         startActivity(intent);
 

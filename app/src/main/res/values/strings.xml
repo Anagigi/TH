@@ -39,14 +39,14 @@
     <string name="sincronizar_datos">Sincronizar Datos</string>
 
 
-<!--Lista de sensores -->
+    <!--Lista de sensores -->
     <string name="representanodo">Imagen que representa nodo</string>
     <string name="nodo">Nodo</string>
     <string name="registro">Registro</string>
     <string name="mostrar_sensores">Mostrar sensores</string>
     <string name="lecturanodo">"Leyendo datos del nodo "</string>
 
-<!--    Detalle Sensor -->
+    <!--    Detalle Sensor -->
 
     <string name="DatoH">- - %</string>
     <string name="DatoT">- - ºC</string>

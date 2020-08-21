@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
-public class MainActivity extends AppCompatActivity {
+public class MasterActivity extends AppCompatActivity {
     /**
      * Creates the content view and toolbar, sets up the drawer layout and the
      * action bar toggle, and sets up the navigation view.
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         /*if (id == R.id.action_settings) {
             return true;
         }*/
-
         return super.onOptionsItemSelected(item);
     }
 
