@@ -31,8 +31,8 @@ public class ListaSensores extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        barChart = findViewById(R.id.barChart);
+        setContentView(R.layout.listasensores);
+        barChart = findViewById(R.id.lineChart3);
         BarDataSet barDataSet1 = new BarDataSet(barEntries1(), "Temperatura");
         barDataSet1.setColors(Color.GREEN);
         BarDataSet barDataSet2 = new BarDataSet(barEntries2(), "Humedad");

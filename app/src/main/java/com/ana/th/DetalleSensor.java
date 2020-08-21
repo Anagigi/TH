@@ -91,7 +91,7 @@ public class DetalleSensor extends AppCompatActivity {
         set.setDrawFilled(true);
         if (Utils.getSDKInt() >= 18) {
             // fill drawable only supported on api level 18 and above
-            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.fed_blue);
+            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.fade_blue);
             set.setFillDrawable(drawable);
             set.setLineWidth(2);
             set.setDrawCircles(true);
@@ -113,7 +113,7 @@ public class DetalleSensor extends AppCompatActivity {
         set1.setDrawFilled(true);
         if (Utils.getSDKInt() >= 18) {
             // fill drawable only supported on api level 18 and above
-            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.fed_blue);
+            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.fade_blue);
             set1.setFillDrawable(drawable);
             set1.setLineWidth(2);
             set1.setDrawCircles(true);

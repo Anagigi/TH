@@ -14,8 +14,6 @@
         android:roundIcon="@mipmap/ic_iconoapp_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Sensores" />
-        <activity android:name=".Inicio" />
         <activity android:name=".BluetoothActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
