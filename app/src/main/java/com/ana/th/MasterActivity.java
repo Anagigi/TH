@@ -20,7 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
-
     /**
      * Creates the content view and toolbar, sets up the drawer layout and the
      * action bar toggle, and sets up the navigation view.
@@ -30,39 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*
-        Toolbar toolbar = findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);*/
-
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        if (fab != null) {
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-        }*/
-       //TODO: entiendo que esto ya no es necesario porque no tenemos el menu lateral
-       /*
-       DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-        if (drawer != null) {
-            drawer.addDrawerListener(toggle);
-        }
-        toggle.syncState();
-
-        /*NavigationView navigationView = findViewById(R.id.nav_view);
-        if (navigationView != null) {
-            navigationView.setNavigationItemSelectedListener(this);
-        }*/
     }
-
-
-
 
     //TODO onbackPressed será dirigido a la actividad principal.
     // DUDA!!!!!: SE PODRÍA HACER UN SWITCH CASE, PARA QUE ONBACKPRESSED RETROCEDA A
@@ -113,8 +80,4 @@ public class MainActivity extends AppCompatActivity {
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
-
-
-
-
 }

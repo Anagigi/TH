@@ -10,7 +10,7 @@ import android.view.View;
 public class Inicio extends AppCompatActivity {
 
     //Esta constante utiliza el nombre de la clase en sí como etiqueta
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private static final String LOG_TAG = MasterActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
