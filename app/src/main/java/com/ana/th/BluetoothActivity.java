@@ -36,7 +36,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class BluetoothActivity extends MainActivity {
-
     //Elementos que forman parte del interfaz usando las funciones de butterknife
     ArrayAdapter<String> dispConocidosArray;
     ArrayAdapter<String> dispNuevosArray;
