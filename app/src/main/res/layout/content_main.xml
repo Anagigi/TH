@@ -1,67 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/deg_dra_menu"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="64dp"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".BluetoothActivity"
-    tools:showIn="@layout/activity_main">
-
+    tools:context=".BluetoothActivity">
 
     <TextView
-        android:id="@+id/disp_conocidos_titulo"
-        android:layout_width="wrap_content"
+        android:id="@+id/dispositivos_conocidos_titulo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|center_vertical"
-        android:layout_weight="1"
-        android:background="@drawable/deg_dra_background"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/deg_dra_bar"
         android:text="@string/dispositivos_conocidos"
-        android:textColor="#fff"
-        android:visibility="gone" />
-
-
-    <ListView
-        android:id="@+id/disp_conocidos_lista"
-        android:layout_width="match_parent"
-        android:layout_height="218dp"
-        android:headerDividersEnabled="false" />
+        android:textColor="@color/indigo0"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/disp_nuevos_titulo"
-        android:layout_width="wrap_content"
+        android:id="@+id/dispositivos_nuevos_titulo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|center_vertical"
-        android:layout_weight="1"
-        android:background="@drawable/deg_dra_background"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/deg_dra_bar"
         android:text="@string/dispositivos_nuevos"
-        android:textColor="#FFF"
-        android:visibility="gone" />
+        android:textColor="@color/indigo0"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dispositivos_conocidos_lista" />
 
     <ListView
-        android:id="@+id/disp_nuevos_lista"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2" />
+        android:id="@+id/dispositivos_conocidos_lista"
+        android:layout_width="0dp"
+        android:layout_height="251dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:headerDividersEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dispositivos_conocidos_titulo" />
+
+    <ListView
+        android:id="@+id/dispositivos_nuevos_lista"
+        android:layout_width="0dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dispositivos_nuevos_titulo" />
 
     <Button
         android:id="@+id/boton_buscar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="BuscarDispositivos"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/deg_dra_background"
-        android:text="@string/boton_inicio" />
-
-
-</LinearLayout>
+        android:onClick="BuscarDispositivos"
+        android:text="@string/boton_inicio"
+        android:textColor="@color/indigo0"
+        android:drawableLeft="@drawable/ic_bluetooth_searching"
+        android:drawableStart="@drawable/ic_bluetooth_searching"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dispositivos_nuevos_lista" />
+</androidx.constraintlayout.widget.ConstraintLayout>

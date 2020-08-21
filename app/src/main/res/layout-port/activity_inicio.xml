@@ -29,7 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgTemperatura" />
 
-
     <Button
         android:id="@+id/IdSeleccionNodos"
         android:layout_width="wrap_content"
@@ -52,52 +51,37 @@
         app:layout_constraintTop_toBottomOf="@+id/IdSincronizar" />
 
 
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/IdSincronizar"
+    <ImageView
+        android:id="@+id/imgHumedad"
+        android:layout_width="106dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/humedad" />
+
+    <ImageView
+        android:id="@+id/imgTemperatura"
+        android:layout_width="163dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="16dp">
-        <ImageView
-            android:id="@+id/imgHumedad"
-            android:layout_width="106dp"
-            android:layout_height="88dp"
-            android:layout_marginTop="156dp"
-            android:layout_marginEnd="88dp"
-            android:layout_marginRight="88dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/humedad"
-            android:contentDescription="@string/componente_1_logo"/>
+        app:srcCompat="@drawable/temperature" />
 
-        <ImageView
-            android:id="@+id/imgTemperatura"
-            android:layout_width="163dp"
-            android:layout_height="144dp"
-            android:layout_marginTop="64dp"
-            android:contentDescription="@string/componente_2_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/temperature" />
-
-        <ImageView
-            android:id="@+id/imgtelesilla"
-            android:layout_width="82dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="104dp"
-            android:layout_marginLeft="104dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="10dp"
-            android:contentDescription="@string/componente_3_logo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/telesilla" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imgtelesilla"
+        android:layout_width="82dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="156dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/telesilla" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

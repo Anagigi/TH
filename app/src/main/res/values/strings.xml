@@ -24,13 +24,13 @@
 
     <!--    BluetoothActivity-->
     <string name="JustificacionPermiso">El permiso es necesario para utilizar el bluetooth.</string>
-    <string name="dispositivos_conocidos">Dispositivos Conocidos</string>
-    <string name="dispositivos_nuevos">Nuevos dispositivos</string>
-    <string name="boton_inicio">Buscar dispositivos</string>
-    <string name="Boton_detener">Detener la búsqueda</string>
+    <string name="dispositivos_conocidos">DISPOSITIVOS CONOCIDOS</string>
+    <string name="dispositivos_nuevos">DISPOSITIVOS NUEVOS</string>
+    <string name="boton_inicio">BÚSQUEDA DE DISPOSITIVOS</string>
+    <string name="Boton_detener">DETENER BÚSQUEDA</string>
     <string name="DispNoTieneBluetooth">El dispositivo no soporta Bluetooth</string>
     <string name="BluetoothActiv">El Bluetooth esta activado</string>
-    <string name="BusquedaAcabada">Busqueda finalizada</string>
+    <string name="BusquedaAcabada">Búsqueda finalizada</string>
     <string name="NoDispCon">No hay dispositivos conocidos</string>
     <string name="NoDispNuevo">No hay dispositivos nuevos</string>
     <string name="RecibirDatos">Empezar a recibir</string>
@@ -67,4 +67,8 @@
     <string name="componente_2_logo">componente 2 logo</string>
     <string name="componente_3_logo">componente 3 logo</string>
 
+    <string name="registro_tempyhum">   Registro: 32ºC 40%</string>
+    <string name="fechayhora">20/10/20 13:26:06</string>
+    <string name="nombre_nodo">   Nodo</string>
+    <string name="representanodo">representanodo</string>
 </resources>

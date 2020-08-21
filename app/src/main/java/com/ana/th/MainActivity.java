@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
@@ -53,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
             drawer.addDrawerListener(toggle);
         }
         toggle.syncState();
-        */
+
+        /*NavigationView navigationView = findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener(this);
+        }*/
     }
 
 
@@ -94,12 +98,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.sincronizar) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
-        if (id == R.id.bluetooth) {
-            return true;
-        }
+        }*/
+
         return super.onOptionsItemSelected(item);
     }
 

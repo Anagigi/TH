@@ -19,7 +19,6 @@
         android:paddingLeft="12dp"
         android:paddingRight="2dp">
 
-
         <ImageView
             android:id="@+id/imgNodo"
             android:layout_width="80dp"

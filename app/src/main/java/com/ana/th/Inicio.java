@@ -30,7 +30,7 @@ public class Inicio extends AppCompatActivity {
 
     public void MostrarSensores(View view) {
         Log.d(LOG_TAG, "Mostrando sensores");
-        Intent intent = new Intent(this, Sensores.class);
+        Intent intent = new Intent(this, DetalleSensor.class);
         startActivity(intent);
     }
 
