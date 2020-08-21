@@ -44,7 +44,7 @@ public class WordListAdapter extends
 
         public WordViewHolder(View itemView, WordListAdapter adapter) {
             super(itemView);
-            wordItemView = itemView.findViewById(R.id.sensor);
+            wordItemView = itemView.findViewById(R.id.);
             this.mAdapter = adapter;
             //Se conecta onclicklistener con el View.
             itemView.setOnClickListener(this);
