@@ -7,56 +7,45 @@
     android:background="@drawable/deg_dra_bar"
     tools:context=".InicioActivity">
 
-
     <Button
         android:id="@+id/IdSincronizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/deg_dra_background"
         android:drawableStart="@drawable/ic_bluetooth"
         android:drawableLeft="@drawable/ic_bluetooth"
         android:gravity="center_vertical"
         android:onClick="SincronizarDatos"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/sincronizar_datos"
+        app:layout_constraintBottom_toTopOf="@+id/lineaGuiaHorizontal50"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-         />
-
+        app:layout_constraintStart_toStartOf="@+id/lineaGuiaVertical50" />
 
     <Button
         android:id="@+id/IdSeleccionNodos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/deg_dra_background"
         android:drawableStart="@drawable/ic_sensorlist"
         android:drawableLeft="@drawable/ic_sensorlist"
         android:onClick="MostrarSensores"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/mostrar_sensores"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IdSincronizar" />
-
+        app:layout_constraintStart_toStartOf="@+id/lineaGuiaVertical50"
+        app:layout_constraintTop_toTopOf="@+id/lineaGuiaHorizontal50" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lineaGuiaVertical50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -97,5 +86,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/telesilla" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lineaGuiaVertical50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lineaGuiaHorizontal50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

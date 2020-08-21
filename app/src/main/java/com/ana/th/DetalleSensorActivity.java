@@ -25,14 +25,10 @@ import com.github.mikephil.charting.utils.Utils;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class DetalleSensor extends AppCompatActivity {
-
-
+public class DetalleSensorActivity extends AppCompatActivity {
     private String mOrderMessage;
 
-
     //Declaracion de variables de la grafica
-
     private LineChart lineChart;
     private LineChart lineChart1;
     //int[] colorArray = {R.color.indigo, R.color.indigo1, R.color.indigo2, R.color.indigo3, R.color.indigo4}; //añadir mas colores si se desea

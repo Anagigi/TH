@@ -83,8 +83,6 @@ public class BluetoothActivity extends MasterActivity {
             this.finish();
         }
 
-
-
         //Iniciar los array.
         dispConocidosArray = new ArrayAdapter<String>(this, R.layout.nombre_dispositivos);
         dispNuevosArray = new ArrayAdapter<String>(this, R.layout.nombre_dispositivos);
@@ -96,8 +94,6 @@ public class BluetoothActivity extends MasterActivity {
         //Mostramos los dispositivos conocidos
         //BluetoothONOFF();
         //dispConocidosShow();
-
-
         //
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         this.registerReceiver(mReceiver, filter);

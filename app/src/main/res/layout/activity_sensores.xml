@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/deg_dra_menu"
     android:orientation="vertical"
-    tools:context=".DetalleSensor">
+    tools:context=".DetalleSensorActivity">
 
 
     <!--    Graficos de la tabla -->

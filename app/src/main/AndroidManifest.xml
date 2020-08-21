@@ -14,9 +14,8 @@
         android:roundIcon="@mipmap/ic_iconoapp_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".InicioActivity"
-            android:label="Inicio">
+        <activity android:name=".InicioActivity"
+            android:label="Monitor TH">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +26,10 @@
             android:name=".BluetoothActivity"
             android:label="Conexión Bluetooth"
             android:parentActivityName=".InicioActivity" />
+        <activity
+            android:name=".ListaSensoresActivity"
+            android:label="Lista de sensores"
+            android:parentActivityName=".InicioActivity"/>
 
         <service
             android:name=".MyService"

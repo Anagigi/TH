@@ -17,7 +17,7 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 
 import java.util.ArrayList;
 
-public class ListaSensores extends AppCompatActivity {
+public class ListaSensoresActivity extends AppCompatActivity {
     //Declaracion de variables de la grafica
     private BarChart barChart;
     //Se crea arrays necesarios para ver los datos que se posicionan en el eje x y el eje y
