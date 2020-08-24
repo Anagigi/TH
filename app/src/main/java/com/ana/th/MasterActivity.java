@@ -74,7 +74,7 @@ public class MasterActivity extends AppCompatActivity {
 
     /**
      * Displays a toast message.
-     * @param message   Message to display in toast
+     * @param message  Message to display in toast
      */
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();

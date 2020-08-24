@@ -8,12 +8,13 @@
     android:orientation="vertical"
     tools:context=".DetalleSensorActivity">
 
-
     <!--    Graficos de la tabla -->
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/lineChart3"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:layout_margin="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -21,8 +22,8 @@
         android:layout_height="match_parent"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
         tools:listitem="@layout/listasensores" />
-
 
 </LinearLayout>
 

@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/sincronizar"
+        android:id="@+id/MenuSincronizar"
         android:orderInCategory="100"
-        android:title=""
+        android:title="Sincronizar datos"
         android:icon="@drawable/ic_sync_black"
         app:showAsAction="always" />
     <item
-        android:id="@+id/bluetooth"
+        android:id="@+id/MenuBluetooth"
         android:orderInCategory="200"
-        android:title=""
-        android:icon="@drawable/ic_bluetooth_black"
+        android:title="Seleccionar dispositivo Bluetooth"
+        android:icon="@drawable/ic_baseline_bluetooth_24"
         app:showAsAction="ifRoom" />
 </menu>

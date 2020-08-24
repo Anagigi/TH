@@ -114,8 +114,6 @@ public class ListaSensoresActivity extends AppCompatActivity {
 
         barChart.groupBars(0, groupSpace, barSpace);
         barChart.invalidate();
-
-
     }
 
     private ArrayList<BarEntry> barEntries1() {
@@ -134,5 +132,4 @@ public class ListaSensoresActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(3, 60));//Humedad nodo 3
         return barEntries;
     }
-
 }

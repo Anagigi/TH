@@ -1,300 +1,194 @@
 package com.ana.th;
 
 import android.Manifest;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.Settings;
+import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import java.util.Set;
+import com.ana.th.bluetooth.BluetoothSensor;
+import com.ana.th.bluetooth.ExceptionBluetoothNotPresent;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textview.MaterialTextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import java.io.IOException;
+import java.nio.charset.CharsetDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BluetoothActivity extends MasterActivity {
-    //Elementos que forman parte del interfaz usando las funciones de butterknife
     ArrayAdapter<String> dispConocidosArray;
     ArrayAdapter<String> dispNuevosArray;
+    private BluetoothSensor _bluetoothSensor;
+    Button _btnSincronizar;
+    MaterialTextView _txtDatos;
 
-    public static String addressEnv;
-    @BindView(R.id.dispositivos_conocidos_titulo)
-    TextView dispConocidosTitulo;
-    @BindView(R.id.dispositivos_conocidos_lista)
-    ListView dispConocidosLista;
-    @BindView(R.id.dispositivos_nuevos_titulo)
-    TextView dispNuevosTitulo;
-    @BindView(R.id.dispositivos_nuevos_lista)
-    ListView dispNuevosLista;
-    @BindView(R.id.boton_buscar)
-    Button botonBuscar;
-
-
-    private BluetoothAdapter mBtAdapter;
-    private BluetoothSocket btSocket;
-    private boolean isBtConnected = false;
-
-    int Cancelar_buscar = 0;
-
-    MyService mService;
-    boolean mBound = false;
-
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_main);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_sincronizacion);
+        // Inicializamos el boton de sincronizar
+        _btnSincronizar = findViewById(R.id.BtnSync);
+        _txtDatos=findViewById(R.id.txtDatosBluetooth);
+        _txtDatos.setMovementMethod(new ScrollingMovementMethod());
+        Handler _hdl=new Handler(){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                if(msg.what== BluetoothSensor.MessageConstants.MESSAGE_READ)
+                {
+                    char c=(char)msg.arg1;
+                    // Obtenemos un array de bytes, estos son caracteres
+                    _txtDatos.setText(new StringBuilder().append(_txtDatos.getText()).append(c));
+                }
+            }
+        };
 
-        //Selecciona el conector bluetooth
         try {
-            mBtAdapter = BluetoothAdapter.getDefaultAdapter();
+            _bluetoothSensor = new BluetoothSensor(_hdl);
         }
-        catch (Exception a){
-
+        catch (ExceptionBluetoothNotPresent exc) {
+            // Mostrar el error
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle("Bluetooth error")
+                    .setMessage(exc.getMessage())
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Regresamos
+                            finish();
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
         }
-        if(mBtAdapter==null){
 
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            // Handle the slideshow action (for now display a toast).
-            drawer.closeDrawer(GravityCompat.START);
-            displayToast(getString(R.string.finish_activity));
-            this.finish();
-        }
-
-        //Iniciar los array.
-        dispConocidosArray = new ArrayAdapter<String>(this, R.layout.nombre_dispositivos);
-        dispNuevosArray = new ArrayAdapter<String>(this, R.layout.nombre_dispositivos);
-
-        //Se asigna la vista
-        dispConocidosLista.setOnItemClickListener(mDeviceClickListener);
-        dispNuevosLista.setOnItemClickListener(mDeviceClickListener);
-
-        //Mostramos los dispositivos conocidos
-        //BluetoothONOFF();
-        //dispConocidosShow();
-        //
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        this.registerReceiver(mReceiver, filter);
-
-        // Register for broadcasts when discovery has finished
-        filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        this.registerReceiver(mReceiver, filter);
-
-        //////////////////Compraobacion persmiso localizan para android >=6.0////////////////////////
+        //////////////////Comprobación persmiso localizan para android >=6.0////////////////////////
         // Comprobar permiso
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-
-        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-            //
-        } else {
+        // Si no hay permiso actualmente
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             // Explicar permiso
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 Toast.makeText(this, R.string.JustificacionPermiso,
                         Toast.LENGTH_SHORT).show();
             }
-
             // Solicitar el permiso
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
-            ////////////////////////////////////////////////////////
         }
+        habilitarBT();
     }
 
-    @OnClick(R.id.boton_buscar)
-    public void BuscarDispositivos(View view) {
-        //Activa bluetooth
-        if (!mBtAdapter.isDiscovering() && Cancelar_buscar == 0) {
-            mBtAdapter.startDiscovery();
-            botonBuscar.setText(R.string.Boton_detener);
-            Cancelar_buscar = 1;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            _bluetoothSensor.desconectar();
+        } catch (IOException e) {
+            e.printStackTrace();
+            displayToast("Bluetooth desconectado");
         }
 
-        if (mBtAdapter.isDiscovering() && Cancelar_buscar == 2) {
-            mBtAdapter.cancelDiscovery();
-            botonBuscar.setText(R.string.boton_inicio);
-            Cancelar_buscar = 0;
-        }
-
-        if (Cancelar_buscar == 1) {
-            Cancelar_buscar = 2;
-        }
     }
 
-    //Muestra los dispositivos conocidos
-    public void dispConocidosShow() {
-        dispConocidosTitulo.setVisibility(View.VISIBLE);
-        dispConocidosLista.setAdapter(dispConocidosArray);
-
-        Set<BluetoothDevice> dispConocidos = mBtAdapter.getBondedDevices();
-
-        // If there are paired devices, add each one to the ArrayAdapter
-        if (dispConocidos.size() > 0) {
-            for (BluetoothDevice device : dispConocidos) {
-                dispConocidosArray.add(device.getName() + "\n" + device.getAddress());
-            }
-        } else {
-            dispConocidosArray.add("No hay dispositivos conocidos");
-        }
-    }
-
-    //Activa el bluetooth
-    private void BluetoothONOFF() {
-        // Check device has Bluetooth and that it is turned on
-        if (mBtAdapter == null) {
-            Toast.makeText(getBaseContext(), R.string.DispNoTieneBluetooth, Toast.LENGTH_SHORT).show();
-        } else {
-            if (mBtAdapter.isEnabled()) {
-                Toast.makeText(getBaseContext(), R.string.BluetoothActiv, Toast.LENGTH_SHORT).show();
-                mBtAdapter.startDiscovery();
-            } else {
-                //Prompt user to turn on Bluetooth
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableBtIntent, 1);
-                mBtAdapter.startDiscovery();
-            }
+    void habilitarBT(){
+        // Verificamos si esta habilitado el Bluetooth
+        if(!_bluetoothSensor.estaHabilitado()){
+            startActivityForResult(_bluetoothSensor.getIntentHabilitarBluetooth(), BluetoothSensor.REQUEST_ENABLE_BT);
         }
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (mBtAdapter != null) {
-            mBtAdapter.cancelDiscovery();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Obtenemos si el usuario habilito el Bluetooth
+        if (requestCode == BluetoothSensor.REQUEST_ENABLE_BT && resultCode == RESULT_CANCELED){
+            displayToast("Debes habilitar la funcionalidad de Bluetooth");
         }
-
-        // Unregister broadcast listeners
-        this.unregisterReceiver(mReceiver);
-    }
-
-    //
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            dispNuevosTitulo.setVisibility(View.VISIBLE);
-            dispNuevosLista.setAdapter(dispNuevosArray);
-            String action = intent.getAction();
-
-            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-                    dispNuevosArray.add(device.getName() + "\n" + device.getAddress());
-                }
-            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                Toast.makeText(getBaseContext(), R.string.BusquedaAcabada, Toast.LENGTH_SHORT).show();
-                botonBuscar.setText(R.string.boton_inicio);
-                if (dispNuevosArray.getCount() == 0) {
-                    dispNuevosArray.add("No hay dispositivos nuevos");
-                }
-
-            }
-        }
-    };
-    //Detecta la pulsacion sobre la lista de dispositivos bluetooth
-    private AdapterView.OnItemClickListener mDeviceClickListener
-            = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-            mBtAdapter.cancelDiscovery();
-            String info = ((TextView) v).getText().toString();
-            String address = info.substring(info.length() - 17);
-            addressEnv = address;
-            new ConnectBT().execute();
-
-        }
-    };
-
-
-    //Estable la conexion con el dispositivo bluetooth
-    private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
-    {
-        private boolean ConnectSuccess = true;
-
-        @Override
-        protected Void doInBackground(Void... devices) {
-
-            btSocket = mService.Socket(addressEnv);
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-
-            if (!ConnectSuccess) {
-                msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
-                finish();
-            } else {
-                msg("Connected.");
-                isBtConnected = true;
-            }
-
-        }
-    }
-
-    //Muestra mensajes en pantalla
-    private void msg(String s) {
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        // Bind to LocalService
-        Intent intent = new Intent(this, MyService.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        // No mostramos esta opción
+        MenuItem _mnSincronizar= menu.findItem(R.id.MenuSincronizar);
+        _mnSincronizar.setVisible(false);
+        MenuItem _mnSeleccionarBt=menu.findItem(R.id.MenuBluetooth);
+        _mnSeleccionarBt.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                habilitarBT();
+                if (_bluetoothSensor.estaHabilitado())
+                    SeleccionarBt();
+                return true;
+            }
+        });
+        return true;
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // Unbind from the service
-     /*    if (mBound) {
-            unbindService(mConnection);
-            mBound = false;
-        }*/
+    private CharSequence[] _cs;
+    private void SeleccionarBt() {
+        // Obtenemos la lista de bluetooths
+        ArrayList<String> _btList = _bluetoothSensor.getNombresSincronizados();
+        _cs=_btList.toArray(new CharSequence[_btList.size()]);
+        //Creamos un dialogo de selección de los dispositivos sincronizados actualmente
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("Bluetooth a sincronizar")
+                .setItems(_cs, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String _btSeleccionado = (String)_cs[which];
+                        _bluetoothSensor.setBluetoothByString(_btSeleccionado);
+                        _btnSincronizar.setEnabled(true);
+                        _btnSincronizar.setText("Sincronizar con "+_bluetoothSensor.getNombre());
+                    }
+                })
+                .setPositiveButton("Vincular nuevo BT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        emparejarBluetooth();
+                    }
+                })
+                .setCancelable(true)
+                .show();
     }
 
-    //Estable conexion con el servicio
-    private ServiceConnection mConnection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName className,
-                                       IBinder service) {
-            MyService.LocalBinder binder = (MyService.LocalBinder) service;
-            mService = binder.getService();
-            mBound = true;
+    public void sincronizarDatos(View view) {
+        // Conectamos al dispositivo Bluetooth
+        try {
+            displayToast("Conectando con "+_bluetoothSensor.getNombre());
+            _bluetoothSensor.conectar();
+        } catch (IOException e) {
+            e.printStackTrace();
+            displayToast("Error en conexión Bluetooth");
         }
+    }
 
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-            mBound = false;
-        }
-    };
+    public void limpiarDatos(View view){
+        _txtDatos.setText("");
+    }
 
-
+    void emparejarBluetooth(){
+        Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
+        startActivityForResult(intent, BluetoothSensor.REQUEST_PAIR_DEVICE);
+    }
 }
